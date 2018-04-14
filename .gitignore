@@ -8,7 +8,6 @@
 # dependencies
 /node_modules
 /dist
-/src/assets/config/configs.json
 
 # IDEs and editors
 /.idea
