@@ -1,48 +1,31 @@
-.wrapper {
-  display: flex;  
-  flex-flow: row wrap;
-  font-weight: bold;
-  text-align: center;
+/* You can add global styles to this file, and also import other style files */
+html,
+body,
+.page {
+  height: 100%; /* needed for proper layout */
 }
 
-.wrapper > * {
-  padding: 10px;
-  flex: 1 100%;
+body {
+  overflow: hidden;
 }
 
-.header {
-  background: tomato;
+.page {
+  display: flex;
+  flex-direction: column;
 }
 
-.footer {
-  background: lightgreen;
+.page-header {
+  flex: 0 0 auto;
+  background-color: #dcdcdc;
 }
 
-.main {
-  text-align: left;
-  background: deepskyblue;
+.page-content {
+  flex: 1 1 auto;
+  position: relative;/* need this to position inner content */
+  overflow-y: auto;
 }
 
-.aside-1 {
-  background: gold;
+.page-footer {
+  flex: 0 0 auto;
+  background-color: #dcdcdc;
 }
-
-.aside-2 {
-  background: hotpink;
-}
-
-// @media all and (min-width: 600px) {
-//   .aside { flex: 1 auto; }
-// }
-
-// @media all and (min-width: 800px) {
-//   .main    { flex: 3 0px; }
-//   .aside-1 { order: 1; } 
-//   .main    { order: 2; }
-//   .aside-2 { order: 3; }
-//   .footer  { order: 4; }
-// }
-
-// body {
-//   padding: 2em; 
-// }
