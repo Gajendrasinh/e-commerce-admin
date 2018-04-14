@@ -1,0 +1,7 @@
+<div class="page">
+    <app-header class="page-header" *ngIf="isLogin"></app-header>
+    <div class="page-content">  
+        <router-outlet></router-outlet>
+    </div>
+    <app-footer class="page-footer" *ngIf="isLogin"></app-footer>
+</div>
