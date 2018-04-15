@@ -1,31 +1,76 @@
-/* You can add global styles to this file, and also import other style files */
-html,
-body,
-.page {
-  height: 100%; /* needed for proper layout */
+html {
+  height: 100%;
 }
 
 body {
-  overflow: hidden;
+  height: 100%;
+  position: relative;
+  margin: 0 !important;
 }
 
-.page {
-  display: flex;
-  flex-direction: column;
+.wrapper {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 60px 0;
+  position: relative;  
 }
 
 .page-header {
-  flex: 0 0 auto;
-  background-color: #dcdcdc;
+  width: 100%;
+  height: 60px;
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding-bottom: 0;
+  border-bottom: none;
 }
 
-.page-content {
-  flex: 1 1 auto;
-  position: relative;/* need this to position inner content */
-  overflow-y: auto;
+.page-content{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  height:100%;
+  background: gray;
+  display: flex;
+}
+
+.side-menu{
+  //background: rgba(5,42,58,.97);
+  width: 200px;
+  flex: 0 0 200px;
+  background: #fff;
+  // box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+}
+
+.main-container{
+  background: #fff;
+  width: 100%;
+  position: relative;
+  padding: 15px 20px;
 }
 
 .page-footer {
-  flex: 0 0 auto;
-  background-color: #dcdcdc;
+  width: 100%;
+  height: 60px;
+  // background: #636363;
+  bottom: 0;
+  left: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  // box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+  text-align: right;
+  padding: 0 15px;
+  color: #000;
+  line-height: 60px;
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
 }
