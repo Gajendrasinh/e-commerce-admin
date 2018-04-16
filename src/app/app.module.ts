@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule, MatSlideToggleModule } from '@angular/material';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { Title, Meta }     from '@angular/platform-browser';
 
 // Plugins
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from 'angular5-social-login';
@@ -32,10 +34,7 @@ import { LoginComponent } from './public/login/login.component';
 import { MainComponent } from './main/main.component';
 import { HeaderComponent } from './main/header/header.component';
 import { FooterComponent } from './main/footer/footer.component';
-import { IndexComponent } from './main/dashboard/index/index.component';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
-import { Templat1Component } from './main/dashboard/templete1/templat1.component';
-import { Templat2Component } from './main/dashboard/templete2/templat2.component';
 
 import { ResetPasswordComponent } from './public/reset-password/reset-password.component';
 import { ChangePasswordComponent } from './main/change-password/change-password.component';
@@ -76,11 +75,8 @@ export function getAuthServiceConfigs() {
     BaseComponent,
     CanLoginActivate,
     CanAuthActivate,
-    DashboardComponent,
-    IndexComponent,
-    Templat1Component,
-    Templat2Component,
     ResetPasswordComponent,
+    DashboardComponent,
     ChangePasswordComponent,
   ],
   imports: [
@@ -98,14 +94,15 @@ export function getAuthServiceConfigs() {
     BrowserModule.withServerTransition({ appId: 'universal-demo-v5' }),
     HttpClientModule,
     BrowserTransferStateModule,
+    BsDropdownModule.forRoot(),
     RouterModule.forRoot([
       { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent,  pathMatch: 'full' },
       {
         path: 'main', component: MainComponent, canActivate:[CanLoginActivate], children: [
           { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-          { path: 'dashboard', component: DashboardComponent, pathMatch: 'full' },    
-          { path: 'dashboard1', component: DashboardComponent, pathMatch: 'full' },        
+          { path: 'dashboard', component: DashboardComponent, pathMatch: 'full' },
+          { path: 'dashboard1', component: DashboardComponent, pathMatch: 'full' }              
         ]
       },
       //{ path: '**', redirectTo: '/main/dashboard', pathMatch: 'full' }

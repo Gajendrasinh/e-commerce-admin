@@ -29,6 +29,10 @@ export class BaseComponent {
         this.activatedRoute = injector.get(ActivatedRoute);
         this.baseUrl = this.commonService._apiUrl;
         // console.log('Your current Environment is :', environment)
+
+        this.router.events.subscribe((event)=>{
+            this.titleService.setTitle((this.router.url).split("/")[2]);
+        });
     }
     public activatedRoute: ActivatedRoute;
     public errorMessage: ErrorMessages;

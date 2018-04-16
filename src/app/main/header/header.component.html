@@ -1,11 +1,19 @@
 <header  class="header-content">
-    <div class="site-logo"><img class="img-logo" src="assets/images/logo-icon.png" alt=""></div>
+    <div class="site-logo"><img class="img-logo" src="https://colorlib.com/polygon/sufee/images/logo.png" alt=""></div>
     <div class="user-menu">
         <div class="container-fluid">
             <nav class="navbar navbar-default">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Page 2</a></li>
-                    <li><a href="#">Page 3</a></li>
+                        <li class="dropdown" dropdown> 
+                            <a dropdownToggle role="button"> 
+                             <i class="fas fa-user-circle"></i> Admin
+                             <i class="fas fa-angle-down"></i>
+                            </a>
+                            <ul *dropdownMenu class="dropdown-menu">
+                                <li><a href="#">Profile</a></li>
+                                <li><a href="#">Logout</a></li>
+                            </ul>
+                        </li>
                 </ul>
             </nav>
         </div>

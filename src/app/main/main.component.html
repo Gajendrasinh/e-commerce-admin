@@ -1,6 +1,23 @@
-
-
-<div class="flexbox-container">
-	<div><h3>Column 1</h3></div>
-	<div><router-outlet></router-outlet></div>
+<div class="wrapper">
+	<app-header class="page-header"></app-header>
+	<div  class="page-content">
+		<div class="side-menu">
+			<ul class="custom-nav">				
+				<li outerLinkActive="active" *ngFor="let menu of sideMenuItem">
+					<a  routerLink="{{menu.url}}" class="waves-effect active">
+						<i class="far {{menu.icon}}"></i>
+						{{menu.title}}
+					</a>
+				</li>
+			</ul>
+		</div>	
+		<div class="main-container">	
+			<ol class="breadcrumb">
+				<li><a href="javascript:void(0)">Home</a></li>		
+				<li><a href="javascript:void(0)">Dashboard</a></li>			
+			</ol>
+			<router-outlet></router-outlet>
+		</div>
+	</div>
+	<app-footer class="page-footer"> </app-footer>
 </div>
