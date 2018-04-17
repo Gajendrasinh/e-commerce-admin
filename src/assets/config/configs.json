@@ -1,4 +1,4 @@
 {
-  "apiUrl": "http://10.2.1.49:5027/api/",
-  "port": "5027"
+  "apiUrl": "http://localhost:5036/api/",
+  "port": "5036"
 }

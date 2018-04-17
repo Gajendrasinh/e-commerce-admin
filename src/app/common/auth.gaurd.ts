@@ -16,8 +16,8 @@ export class CanLoginActivate extends BaseComponent implements CanActivate {
     }
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         //console.log('can login activate called', this.getToken("accessToken"))  
-        console.log(localStorage.getItem('accessToken'))     
-        if (localStorage.getItem('accessToken') != null) {
+       // console.log(localStorage.getItem('accessToken'))     
+        if (this.getToken('accessToken') != null) {
             console.log('returning true', this.getToken("accessToken"))
             return true;
         }else{

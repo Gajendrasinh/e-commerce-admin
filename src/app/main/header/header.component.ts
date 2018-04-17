@@ -81,5 +81,6 @@ export class HeaderComponent extends BaseComponent implements OnInit {
     this.userDetail = {};
     this.isLogin = false;
     this.commonService.loginRequest.emit(false);
+    this.router.navigate(['login']);
   }
 }

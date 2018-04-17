@@ -3,7 +3,7 @@
 	<div  class="page-content">
 		<div class="side-menu">
 			<ul class="custom-nav">				
-				<li outerLinkActive="active" *ngFor="let menu of sideMenuItem">
+				<li routerLinkActive="active" *ngFor="let menu of sideMenuItem">
 					<a  routerLink="{{menu.url}}" class="waves-effect active">
 						<i class="far {{menu.icon}}"></i>
 						{{menu.title}}
@@ -11,11 +11,8 @@
 				</li>
 			</ul>
 		</div>	
-		<div class="main-container">	
-			<ol class="breadcrumb">
-				<li><a href="javascript:void(0)">Home</a></li>		
-				<li><a href="javascript:void(0)">Dashboard</a></li>			
-			</ol>
+		<div class="main-container">
+			<app-breadcrumb></app-breadcrumb>
 			<router-outlet></router-outlet>
 		</div>
 	</div>

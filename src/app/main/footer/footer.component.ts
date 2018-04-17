@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
+  public copyYear:any;
+  public copyName: string;
+
   constructor() { }
 
   ngOnInit() {
+    this.copyName = "Gajendrasinh Zala";
+    var date = new Date();
+    this.copyYear = date.getFullYear();
   }
 
 }

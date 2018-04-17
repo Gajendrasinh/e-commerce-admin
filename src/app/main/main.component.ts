@@ -10,7 +10,7 @@ export class MainComponent extends BaseComponent implements  OnInit {
 
   public sideMenuItem: any = [
     {title : "Dashboard", icon: 'fa-tachometer-alt', url: 'dashboard'},
-    {title : "Profile", icon: 'fa-user', url: 'dashboard1'}
+    {title : "Profile", icon: 'fa-user', url: 'profile'}
   ]
   ngOnInit() {
   }

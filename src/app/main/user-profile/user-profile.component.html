@@ -1,0 +1,59 @@
+<div class="user-profile">
+    <div class="text-right">
+        <i class="fas fa-pencil-alt edit-form" (click)="isEdit = false"></i>
+    </div>
+    <div class="user-img">
+      <img src="assets/images/user-img.png" class="img-responsive rounded-circle" alt="">
+    </div>
+    <div class="user-list-content">
+      
+      <div class="text-center">
+        <h3>Gajendrasinh Zala</h3>
+        <p>Super Admin</p>
+        <div class="social-list clearfix mb-4">
+          <ul class="list-inline d-inline-block">
+            <li>
+              <a href="javascript:void(0);" class="text-pink"><i class="fab fa-facebook-f"></i></a>
+            </li> 
+            <li>
+              <a href="javascript:void(0);" class="text-pink"><i class="fab fa-twitter"></i></a>
+            </li> 
+            <li>
+              <a href="javascript:void(0);" class="text-pink"><i class="fab fa-google"></i></a>
+            </li> 
+            <li>
+              <a href="javascript:void(0);" class="text-pink"><i class="fab fa-linkedin-in"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="user-basic-detial">
+        <form #updateForm="ngForm" (ngSubmit)="updateProfile(updateForm, userDetail)">
+          <div class="form-group col-sm-6">
+            <label for="firstname">First Name</label>
+            <input type="text" [readonly]="isEdit" class="form-control custom-input" id="firstname" name="firstname" [(ngModel)]="userDetail.firstname">
+          </div>
+          <div class="form-group col-sm-6">
+            <label for="lastname">Last Name</label>
+            <input type="text" [readonly]="isEdit" class="form-control custom-input" id="lastname" name="lastname" [(ngModel)]="userDetail.lastname">
+          </div>
+          <div class="form-group col-sm-6">
+              <label for="username">Username</label>
+              <input type="text" [readonly]="isEdit" class="form-control custom-input" id="username" name="username" [(ngModel)]="userDetail.username">
+            </div>
+          <div class="form-group col-sm-6">
+            <label for="email">Email</label>
+            <input type="email" [readonly]="isEdit" class="form-control custom-input" id="email" name="email" [(ngModel)]="userDetail.emailId">
+          </div>
+          <div class="form-group col-sm-6">
+            <label for="contactno">Mobile</label>
+            <input type="text" [readonly]="isEdit" class="form-control custom-input" id="contactno" name="contactno" [(ngModel)]="userDetail.contactno">
+          </div>
+          <div class="col-sm-6 text-right">
+              <button type="submit" class="btn btn-primary mg-top">Update</button>
+          </div>
+        </form>
+    </div>
+</div>

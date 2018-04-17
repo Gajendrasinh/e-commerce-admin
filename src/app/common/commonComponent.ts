@@ -31,7 +31,7 @@ export class BaseComponent {
         // console.log('Your current Environment is :', environment)
 
         this.router.events.subscribe((event)=>{
-            this.titleService.setTitle((this.router.url).split("/")[2]);
+            this.titleService.setTitle((this.router.url).split("/")[2] + " E-commerce - Admin Panel");
         });
     }
     public activatedRoute: ActivatedRoute;

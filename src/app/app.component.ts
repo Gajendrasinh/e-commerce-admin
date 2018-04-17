@@ -17,12 +17,16 @@ const DOGS_KEY = makeStateKey('dogs');
 })
 export class AppComponent extends BaseComponent implements OnInit {
 
+  loading: boolean = false;
   constructor(
     public titleService: Title,
     public metaService: Meta,
     inj : Injector,
   ) {
-    super(inj)
+    super(inj);
+    this.commonService.loadingStatus().subscribe(( loading: boolean ) => {
+        this.loading = loading;
+    } );
   }
 
   ngOnInit() {

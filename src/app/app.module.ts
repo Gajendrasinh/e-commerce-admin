@@ -18,6 +18,7 @@ import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { PaginationModule } from 'ngx-bootstrap';
 import { ModalModule } from 'ngx-bootstrap';
+import { PNotifySettings, PNotifyService } from 'ng2-pnotify';
 
 // Common
 import { BaseComponent } from './common/commonComponent';
@@ -38,6 +39,8 @@ import { DashboardComponent } from './main/dashboard/dashboard.component';
 
 import { ResetPasswordComponent } from './public/reset-password/reset-password.component';
 import { ChangePasswordComponent } from './main/change-password/change-password.component';
+import { UserProfileComponent } from './main/user-profile/user-profile.component';
+import { BreadcrumbComponent } from './main/breadcrumb/breadcrumb.component';
 
 
 // User management
@@ -78,6 +81,8 @@ export function getAuthServiceConfigs() {
     ResetPasswordComponent,
     DashboardComponent,
     ChangePasswordComponent,
+    UserProfileComponent,
+    BreadcrumbComponent,
   ],
   imports: [
     NgSelectModule,
@@ -101,15 +106,15 @@ export function getAuthServiceConfigs() {
       {
         path: 'main', component: MainComponent, canActivate:[CanLoginActivate], children: [
           { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-          { path: 'dashboard', component: DashboardComponent, pathMatch: 'full' },
-          { path: 'dashboard1', component: DashboardComponent, pathMatch: 'full' }              
+          { path: 'dashboard', component: DashboardComponent, pathMatch: 'full', data: { breadcrumb: "Dashboard" } },
+          { path: 'profile', component: UserProfileComponent, pathMatch: 'full', data: { breadcrumb: "Profile" }  }              
         ]
       },
       //{ path: '**', redirectTo: '/main/dashboard', pathMatch: 'full' }
     ])
   ],
   providers: [
-    CanLoginActivate, CanAuthActivate, CommonService, ErrorMessages,
+    CanLoginActivate, CanAuthActivate, CommonService, ErrorMessages,PNotifyService,
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs

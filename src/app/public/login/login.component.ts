@@ -81,14 +81,17 @@ export class LoginComponent extends BaseComponent implements OnInit {
 
   onLogin(form, user){
     if(form.valid){
+      this.commonService.loading(true);
       this.commonService.callApi('adminLogin', user, 'post', false, true).then(success=>{
-        if(success.status == 1){
-          console.log(success.data.id);
-          this.setToken('accessToken', success.data.id)
-          this.router.navigate(["/main"]);
+        if(success.status == 1){          
+          this.commonService.success(success.message);
+          this.setToken('accessToken', success.access_token);
+          this.setToken('userdetail', JSON.stringify(success.data));
+          this.router.navigate(["/main"]);          
         }else{
           this.popToast('error',success.message)
         }
+        this.commonService.loading(false);
       })
     }else{
       this.popToast('error','Please provide complete information.')

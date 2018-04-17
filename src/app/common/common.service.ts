@@ -5,15 +5,28 @@ import { HttpClient, HttpHeaders, HttpResponse, HttpParams } from '@angular/comm
 import { Observable } from 'rxjs/Observable';
 import * as config from 'assets/config/configs.json';
 import swal from 'sweetalert2';
+import { Subject } from 'rxjs/Subject';
+
+import { PNotifyService, PNotifySettings } from 'ng2-pnotify';
+import PNotify from 'pnotify';
+import 'pnotify/dist/pnotify.css';
+import 'pnotify/dist/pnotify.buttons.js';
+import 'pnotify/dist/pnotify.buttons.css';
+
 
 @Injectable()
 export class CommonService {
 	loginRequest = new EventEmitter<any>();
+	private pnotifyService: PNotifyService;
+
+	private preloaderSubject = new Subject<boolean>();
+    private preloader: boolean;
 
 	authorised: any = false;
 	constructor(public _http: HttpClient, @Inject(PLATFORM_ID) platformId: Object) {
 		this.platformId = platformId;
 		this._apiUrl = this.config.apiUrl;
+		this.pnotifyService = new PNotifyService({ styling: 'bootstrap3' });
 	}
 
 	public config = (<any>config);
@@ -46,8 +59,26 @@ export class CommonService {
 		}
 		return false;
 	}
+	
+	success(message: string, keepAfterNavigationChange = true, section: string = '') {
+		if(message && message != ""){
+			this.pnotifyService.success({ text: message, title: 'Success' });
+		} 
+	}
 
+	error(message: string, keepAfterNavigationChange = true, section: string = '') {
+		this.pnotifyService.error({ text: message, title: 'Error' });
+	}
 
+	loading( preloader: boolean ) {
+        this.preloader = preloader;
+        this.preloaderSubject.next( preloader );
+    }
+
+    loadingStatus(): Observable<boolean> {
+        return this.preloaderSubject.asObservable();
+	}
+	
     /*******************************************************************************************
 	@PURPOSE      	: 	Call api.
 	@Parameters 	: 	{
@@ -71,7 +102,7 @@ export class CommonService {
 		return new Promise((resolve, reject) => {
 			if (method === 'post') {
 				this._http.post(this._apiUrl + url, data, { headers })
-					.subscribe(data => { console.log('success api call', data);  resolve(data); }, error => { this.showServerError(error); });
+					.subscribe(data => { resolve(data); }, error => { this.showServerError(error); });
 			} else if (method === 'get') {
 				// let params: { appid: 'id1234', cnt: '5' }
 				this._http.get(this._apiUrl + url, { headers })
